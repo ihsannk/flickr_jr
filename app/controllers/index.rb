@@ -1,5 +1,5 @@
 get '/' do
-  #@photo = Photo.order(created_at: :desc)
+  @photos = Photo.order(created_at: :desc)
   if session[:user] != nil
     @user = session[:user]
   end

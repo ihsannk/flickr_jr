@@ -1,13 +1,17 @@
 <div class="container">
   <br>
-  <form action="/upload/" method="post">
+  <form action="/<%= @photo.album_id %>/upload_photo" enctype="multipart/form-data" method="post">
     <fieldset>
       <legend> upload photo </legend>
-      	<input type="file" name="image" accept="image/*">
+      	<input type="file" name="filename" accept="image/*">
   		<input type="submit"value="upload">
+      <p> Photo Description: <input type="text" name="photo_description" size="40">
 	</fieldset>
   </form>
   <br>
- <%= @user %>
- <%= @album %>
+  <% @photos.each do |p|%>
+  <a href="/albums/<%= p.album.album_name %>/<%= p.id %>"><img src="<%= p.filename %>" width="200px" height="200px"></a>
+  <%= %>
+  <% end %>
+  <br>
 </div>

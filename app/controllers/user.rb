@@ -24,6 +24,7 @@ post '/signup' do
   @password = params[:password]
 
   @user = User.create(username: @username, password: @password)
+  @albums = Album.create(user_id: @user.id, album_name: "default", album_description: "My default photo album")
   session[:user] = @username
   session[:id] = @user.id
   redirect to "/"

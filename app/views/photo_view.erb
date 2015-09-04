@@ -1,0 +1,13 @@
+<div class="container">
+  <br>
+  <img src="<%= @photo.filename %>" width="600px" height="600px">
+
+  <input type="text" size="52" name="photo_description" value="<%= @photo.photo_description %>">
+
+  <input action="/edit" type="submit" value="Edit">
+
+  <form action="/albums/<%= @photo.album.album_name %>/<%= @photo.id %>/delete" method="post">
+  	<input type="submit" value="Delete Photo">
+  </form>
+
+</div>

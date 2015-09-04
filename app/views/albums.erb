@@ -14,8 +14,9 @@
 	  <legend>  Albums </legend>
 	    <% @albums.each do |a|%>
 	      <dl>
-			    <dt><a href="/albums/<%= a.id %>"><%= a.album_name %></a></dt>
+			    <dt><a href="/albums/<%= a.album_name %>"><%= a.album_name %></a></dt>
 			    <dd><%= a.album_description %></dd>
+          <br>
           <% end %>
 		    </dl>
 	    

@@ -15,6 +15,7 @@ require 'mini_magick'
 require 'uri'
 require 'pathname'
 
+require "byebug"
 require 'pg'
 require 'active_record'
 require 'logger'

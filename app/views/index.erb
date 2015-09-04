@@ -1,1 +1,8 @@
-
+<div class="container">
+ <br>
+  <% @photos.each do |p|%>
+  <a href="/albums/<%= p.album.album_name %>/<%= p.id %>"><img src="<%= p.filename %>" width="200px" height="200px"></a>
+  <%= %>
+  <% end %>
+  <br>
+</div>
