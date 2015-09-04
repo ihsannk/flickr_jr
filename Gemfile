@@ -7,6 +7,11 @@ gem 'pg'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
+# Uploading files
+gem 'carrierwave'
+gem 'mini_magick'
+
+
 # Use Thin for our web server
 gem 'thin'
 

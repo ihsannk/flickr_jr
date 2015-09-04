@@ -1,0 +1,25 @@
+<div class="container">
+  <br>
+  <form action="/create_album" method="post">
+    <fieldset>
+      <legend> Create Album </legend>
+      	<p><input type="text" name="album_name" placeholder="album name"></p>
+      	<p><input type="text" name="album_description" placeholder="album description"></p>
+      	<p><input type="submit" value="create"></p>
+    </fieldset>
+  </form>
+  <br>
+
+	<fieldset>
+	  <legend>  Albums </legend>
+	    <% @albums.each do |a|%>
+	      <dl>
+			    <dt><a href="/albums/<%= a.id %>"><%= a.album_name %></a></dt>
+			    <dd><%= a.album_description %></dd>
+          <% end %>
+		    </dl>
+	    
+	</fieldset>
+
+</div>
+

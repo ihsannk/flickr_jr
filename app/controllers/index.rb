@@ -1,4 +1,8 @@
 get '/' do
-  # Look in app/views/index.erb
+  #@photo = Photo.order(created_at: :desc)
+  if session[:user] != nil
+    @user = session[:user]
+  end
   erb :index
 end
+
