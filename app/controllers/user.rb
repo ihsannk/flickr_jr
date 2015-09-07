@@ -24,14 +24,14 @@ post '/signup' do
   @password = params[:password]
 
   @user = User.create(username: @username, password: @password)
-  @albums = Album.create(user_id: @user.id, album_name: "default", album_description: "My default photo album")
+  @albums = Album.create(user_id: @user.id, album_name: "#{@user.username}'s_folder", album_description: "My default photo album")
   session[:user] = @username
   session[:id] = @user.id
   redirect to "/"
 end
 
 get '/logout' do
-  session[:user] = nil
+  session.clear
   redirect to "/"
   erb :index
 end

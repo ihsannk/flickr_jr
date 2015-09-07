@@ -1,6 +1,7 @@
 <div class="container">
   <br>
-  <form action="/<%= @photo.album_id %>/upload_photo" enctype="multipart/form-data" method="post">
+  <% if session[:id] == @album.user_id %>
+  <form action="/albums/<%= params[:album_name] %>/upload_photo" enctype="multipart/form-data" method="post">
     <fieldset>
       <legend> upload photo </legend>
       	<input type="file" name="filename" accept="image/*">
@@ -8,7 +9,9 @@
       <p> Photo Description: <input type="text" name="photo_description" size="40">
 	</fieldset>
   </form>
+  <% end %>
   <br>
+  <p><legend> <%= @album.album_name %> </legend><hr>
   <% @photos.each do |p|%>
   <a href="/albums/<%= p.album.album_name %>/<%= p.id %>"><img src="<%= p.filename %>" width="200px" height="200px"></a>
   <%= %>

@@ -1,8 +1,18 @@
 <div class="container">
  <br>
-  <% @photos.each do |p|%>
-  <a href="/albums/<%= p.album.album_name %>/<%= p.id %>"><img src="<%= p.filename %>" width="200px" height="200px"></a>
-  <%= %>
-  <% end %>
+   
+     <p><legend> photos </legend><hr>
+     <% @photos.each do |p|%>
+       <a href="/albums/<%= p.album.album_name %>/<%= p.id %>"><img src="<%= p.filename %>" width="200px" height="200px"></a>
+     <% end %>
+   
+  <br>
+   
+     <p><legend> albums </legend><hr>
+     <% @albums.each do |a|%>
+        <p><dt><a href="/albums/<%= a.album_name %>"><%= a.album_name %></a> by <%= a.user.username %> | created <%=time_ago(a.created_at) %></dt>
+		  <dd><%= a.album_description %></dd>
+     <% end %>
+   
   <br>
 </div>

@@ -1,6 +1,6 @@
 get "/albums" do
   @user = session[:user]
-  @albums = Album.all
+  @albums = Album.where(user_id: session[:id])
   erb :albums
 end
 
@@ -14,20 +14,21 @@ end
 
 get "/albums/:album_name" do
   @user = session[:user]
-  @albums = Album.where(album_id: session[:album_id])
-  @photos = Photo.where(album_id: session[:album_id])
+  
+  @album = Album.find_by(album_name: params[:album_name])
+  @photos = Photo.where(album_id: @album.id)
   
   erb :album_view
 end
 
-post '/:album_id/upload_photo' do
+post '/albums/:album_name/upload_photo' do
   @filename = params[:filename]
   @photo_description = params[:photo_description]
-  @album_id = params[:album_id]
+  @album = Album.find_by(album_name: params[:album_name])
 
-  @photo = Photo.create(filename: @filename, photo_description: @photo_description, album_id: @album_id)
+  @photo = Photo.create(filename: @filename, photo_description: @photo_description, album_id: @album.id)
   
-  redirect to "/albums/#{@photo.album.album_name}"
+  redirect to "/albums/#{@album.album_name}"
 end
 
 get "/albums/:album_name/:id" do

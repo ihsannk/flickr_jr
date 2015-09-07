@@ -21,9 +21,9 @@
   <div class="container">
     <h1>Flickr Jr.</h1>
     <% if session[:user] != nil %>
-     <a href="/"> home </a> | <a href="/upload"> upload </a> | <a href="/albums"> albums </a> |  <a href="/logout"> logout </a> | <%= @user %>
+     <a href="/"> home </a> | <a href="/albums/<%= @user %>'s_folder"> upload </a> | <a href="/albums"> my albums </a> |  <a href="/logout"> logout </a> | <%= @user %>
     <% else %>
-      <a href="/"> home </a> | <a href="/albums"> albums </a> | <a href="/login"> login / signup </a>
+      <a href="/"> home </a> | <a href="/login"> login / signup </a>
     <% end %>
    
   </div>

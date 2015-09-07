@@ -1,13 +1,16 @@
 <div class="container">
   <br>
+   by <%= @photo.album.user.username %> | created <%=time_ago(@photo.album.created_at) %> in <%= @photo.album.album_name %> album
   <img src="<%= @photo.filename %>" width="600px" height="600px">
 
-  <input type="text" size="52" name="photo_description" value="<%= @photo.photo_description %>">
-
-  <input action="/edit" type="submit" value="Edit">
-
-  <form action="/albums/<%= @photo.album.album_name %>/<%= @photo.id %>/delete" method="post">
-  	<input type="submit" value="Delete Photo">
+  <input type="text" size="57" name="photo_description" value="<%= @photo.photo_description %>">
+    <% if session[:id] == @photo.album.user_id %>
+      <input action="/edit" type="submit" value="Edit">
+    
+      <form action="/albums/<%= @photo.album.album_name %>/<%= @photo.id %>/delete" method="post">
+  
+  	  <input type="submit" value="Delete Photo">
+  	<%end%>
   </form>
 
 </div>
